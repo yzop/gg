@@ -1,10 +1,12 @@
-name: Code Formatter
+name: Ffmpeg builds
+
 on :
   push:
     branches:
       - master
   schedule:
     - cron: 00 02 * * *
+
 jobs:
   ffmpeg:
     runs-on: ubuntu-latest
