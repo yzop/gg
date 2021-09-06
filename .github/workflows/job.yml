@@ -11,6 +11,7 @@ jobs:
   ffmpeg:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: get the tar file
         run: |
           rm -rf ff*.tar.xz
