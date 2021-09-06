@@ -1,1 +1,21 @@
-test
+name: Code Formatter
+on :
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: 00 02 * * *
+jobs:
+  ffmpeg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get the tar file
+        run: |
+          rm -rf ff*.tar.xz
+          wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz
+    
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Cron"
+          commit_options: "--no-verify"
+          repository: .
