@@ -15,6 +15,7 @@ jobs:
         run: |
           rm -rf ff*.tar.xz
           wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz
+          git add .
     
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
