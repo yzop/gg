@@ -16,6 +16,7 @@ jobs:
         run: |
           rm -rf ff*.tar.xz
           wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz
+          wget https://github.com/P3TERX/Aria2-Pro-Core/releases/latest/download/aria2-1.36.0-static-linux-amd64.tar.gz && tar xzf aria2*.tar.gz && rm -rf *.gz
           git add .
     
       - uses: stefanzweifel/git-auto-commit-action@v4
