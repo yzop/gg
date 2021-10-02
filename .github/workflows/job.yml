@@ -16,6 +16,17 @@ jobs:
         run: |
           rm -rf ff*.tar.xz
           wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz
+          wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-i686-static.tar.xz
+          wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-arm64-static.tar.xz
+          wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-armhf-static.tar.xz
+          wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-armel-static.tar.xz
+          wget https://johnvansickle.com/ffmpeg/git-readme.txt
+          wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+          wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-i686-static.tar.xz
+          wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-arm64-static.tar.xz
+          wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-armhf-static.tar.xz
+          wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-armel-static.tar.xz
+          wget https://johnvansickle.com/ffmpeg/release-readme.txt
           wget https://github.com/P3TERX/Aria2-Pro-Core/releases/latest/download/aria2-1.36.0-static-linux-amd64.tar.gz && tar xzf aria2*.tar.gz && rm -rf *.gz
           git add .
     
