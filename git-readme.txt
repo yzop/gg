@@ -7,20 +7,20 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-git-20210920-amd64-static.tar.xz
-              version: d873b5fffc8292242549c4c026023e370e15c05b
+                build: ffmpeg-git-20211009-amd64-static.tar.xz
+              version: d115eec97929e23fd1b06df2d95f48cf5000eb87
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
                  nasm: 2.15.05
 
-               libaom: 3.1.2-776-ga786b2d35
+               libaom: 3.1.3-843-gd1d5aa04d
                libass: 0.15.2
                libgme: 0.6.2
                libsrt: 1.4.2
-               libvpx: 1.10.0-125-g7366195e5
+               libvpx: 1.10.0-136-g7aabd6968
               libvmaf: 1.5.3
-              libx264: 0.164.3065 
+              libx264: 0.164.3075 
               libx265: 3.5+1-f0c1022b6
               libxvid: 1.3.7 
               libwebp: 0.6.1 
@@ -154,6 +154,7 @@ Codecs:
  D.VI.S frwu                 Forward Uncompressed
  D.V.L. g2m                  Go2Meeting
  D.V.L. gdv                  Gremlin Digital Video
+ D.V.L. gem                  GEM Raster image
  DEV..S gif                  CompuServe GIF (Graphics Interchange Format)
  DEV.L. h261                 H.261
  DEV.L. h263                 H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2 (decoders: h263 h263_v4l2m2m ) (encoders: h263 h263_v4l2m2m )
@@ -445,7 +446,7 @@ Codecs:
  D.AIL. mace3                MACE (Macintosh Audio Compression/Expansion) 3:1
  D.AIL. mace6                MACE (Macintosh Audio Compression/Expansion) 6:1
  D.AIL. metasound            Voxware MetaSound
- DEAI.S mlp                  MLP (Meridian Lossless Packing)
+ DEA..S mlp                  MLP (Meridian Lossless Packing)
  D.AIL. mp1                  MP1 (MPEG audio layer 1) (decoders: mp1 mp1float )
  DEAIL. mp2                  MP2 (MPEG audio layer 2) (decoders: mp2 mp2float ) (encoders: mp2 mp2fixed )
  DEAIL. mp3                  MP3 (MPEG audio layer 3) (decoders: mp3float mp3 ) (encoders: libmp3lame )
@@ -600,11 +601,12 @@ Filters:
  .SC afir              N->N       Apply Finite Impulse Response filter with supplied coefficients in additional stream(s).
  ... aformat           A->A       Convert the input audio to one of the specified formats.
  TSC afreqshift        A->A       Apply frequency shifting to input audio.
- .SC afwtdn            A->A       Denoise audio stream using Wavelets.
+ TSC afwtdn            A->A       Denoise audio stream using Wavelets.
  T.C agate             A->A       Audio gate.
  .S. aiir              A->N       Apply Infinite Impulse Response filter with supplied coefficients.
  ... aintegral         A->A       Compute integral of input audio.
  ... ainterleave       N->A       Temporally interleave audio inputs.
+ T.. alatency          A->A       Report audio filtering latency.
  ... alimiter          A->A       Audio lookahead limiter.
  TSC allpass           A->A       Apply a two-pole all-pass filter.
  ... aloop             A->A       Loop audio samples.
@@ -626,6 +628,7 @@ Filters:
  ... aresample         A->A       Resample audio data.
  ... areverse          A->A       Reverse an audio clip.
  TSC arnndn            A->A       Reduce noise from speech using Recurrent Neural Networks.
+ ... asdr              AA->A      Measure Audio Signal-to-Distortion Ratio.
  ... asegment          A->N       Segment audio stream.
  ... aselect           A->N       Select audio frames to pass in output.
  ... asendcmd          A->A       Send commands to filters.
@@ -710,7 +713,7 @@ Filters:
  TSC amplify           V->V       Amplify changes between successive video frames.
  ... ass               V->V       Render ASS subtitles onto input video using the libass library.
  TSC atadenoise        V->V       Apply an Adaptive Temporal Averaging Denoiser.
- TSC avgblur           V->V       Apply Average Blur filter.
+ T.C avgblur           V->V       Apply Average Blur filter.
  T.C bbox              V->V       Compute bounding box for each frame.
  ... bench             V->V       Benchmark part of a filtergraph.
  T.C bilateral         V->V       Apply Bilateral filter.
@@ -831,6 +834,7 @@ Filters:
  ... kerndeint         V->V       Apply kernel deinterlacing to the input.
  TSC kirsch            V->V       Apply kirsch operator.
  TSC lagfun            V->V       Slowly update darker pixels.
+ T.. latency           V->V       Report video filtering latency.
  TSC lenscorrection    V->V       Rectify the image by correcting for lens distortion.
  ... libvmaf           VV->V      Calculate the VMAF between two video streams.
  TSC limiter           V->V       Limit pixels components to the specified range.
@@ -856,6 +860,7 @@ Filters:
  ... minterpolate      V->V       Frame rate conversion using Motion Interpolation.
  TSC mix               N->V       Mix video inputs.
  TSC monochrome        V->V       Convert video to gray using custom color filter.
+ T.C morpho            VV->V      Apply Morphological filter.
  ... mpdecimate        V->V       Remove near-duplicate frames.
  TS. msad              VV->V      Calculate the MSAD between two video streams.
  TSC negate            V->V       Negate input video.
@@ -889,7 +894,7 @@ Filters:
  TSC readeia608        V->V       Read EIA-608 Closed Caption codes from input video and write them to frame metadata.
  ... readvitc          V->V       Read vertical interval timecode and write it to frame metadata.
  ... realtime          V->V       Slow down filtering to match realtime.
- TS. remap             VVV->V     Remap pixels.
+ .S. remap             VVV->V     Remap pixels.
  TS. removegrain       V->V       Remove grain.
  T.. removelogo        V->V       Remove a TV logo based on a mask image.
  ... repeatfields      V->V       Hard repeat fields based on MPEG repeat field flag.
