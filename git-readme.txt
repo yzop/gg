@@ -7,18 +7,18 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-git-20211009-amd64-static.tar.xz
-              version: d115eec97929e23fd1b06df2d95f48cf5000eb87
+                build: ffmpeg-git-20211013-amd64-static.tar.xz
+              version: 933765aa0e07653307ff65a6af159a5922f1dc1d
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
                  nasm: 2.15.05
 
-               libaom: 3.1.3-843-gd1d5aa04d
+               libaom: 3.1.3-853-gd5c50e5cf
                libass: 0.15.2
                libgme: 0.6.2
                libsrt: 1.4.2
-               libvpx: 1.10.0-136-g7aabd6968
+               libvpx: 1.11.0-21-ge259e6951
               libvmaf: 1.5.3
               libx264: 0.164.3075 
               libx265: 3.5+1-f0c1022b6
@@ -513,7 +513,7 @@ Codecs:
  D.AIL. sol_dpcm             DPCM Sol
  DEAI.. sonic                Sonic
  .EAI.. sonicls              Sonic lossless
- DEAIL. speex                Speex (decoders: libspeex ) (encoders: libspeex )
+ DEAIL. speex                Speex (decoders: speex libspeex ) (encoders: libspeex )
  D.A..S tak                  TAK (Tom's lossless Audio Kompressor)
  DEA..S truehd               TrueHD
  D.AIL. truespeech           DSP Group TrueSpeech
@@ -837,6 +837,7 @@ Filters:
  T.. latency           V->V       Report video filtering latency.
  TSC lenscorrection    V->V       Rectify the image by correcting for lens distortion.
  ... libvmaf           VV->V      Calculate the VMAF between two video streams.
+ TSC limitdiff         N->V       Apply filtering with limiting difference.
  TSC limiter           V->V       Limit pixels components to the specified range.
  ... loop              V->V       Loop video frames.
  TSC lumakey           V->V       Turns a certain luma into transparency.
@@ -975,6 +976,7 @@ Filters:
  .S. waveform          V->V       Video waveform monitor.
  .S. weave             V->V       Weave input video fields into frames.
  .S. xbr               V->V       Scale the input using xBR algorithm.
+ TS. xcorrelate        VV->V      Cross-correlate first video stream with second video stream.
  .S. xfade             VV->V      Cross fade one video with another video.
  TSC xmedian           N->V       Pick median pixels from several video inputs.
  .S. xstack            N->V       Stack video inputs into custom layout.
