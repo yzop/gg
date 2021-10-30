@@ -7,18 +7,18 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-git-20211013-amd64-static.tar.xz
-              version: 933765aa0e07653307ff65a6af159a5922f1dc1d
+                build: ffmpeg-git-20211029-amd64-static.tar.xz
+              version: 4f8494fe5a4307e8661e4d66231f488d644a0524
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
                  nasm: 2.15.05
 
-               libaom: 3.1.3-853-gd5c50e5cf
+               libaom: 3.2.0-169-ge98a5fb1a
                libass: 0.15.2
                libgme: 0.6.2
                libsrt: 1.4.2
-               libvpx: 1.11.0-21-ge259e6951
+               libvpx: 1.11.0-23-gc56ab7d0c
               libvmaf: 1.5.3
               libx264: 0.164.3075 
               libx265: 3.5+1-f0c1022b6
@@ -607,7 +607,7 @@ Filters:
  ... aintegral         A->A       Compute integral of input audio.
  ... ainterleave       N->A       Temporally interleave audio inputs.
  T.. alatency          A->A       Report audio filtering latency.
- ... alimiter          A->A       Audio lookahead limiter.
+ T.C alimiter          A->A       Audio lookahead limiter.
  TSC allpass           A->A       Apply a two-pole all-pass filter.
  ... aloop             A->A       Loop audio samples.
  ... amerge            N->A       Merge two or more audio streams into a single multi-channel stream.
@@ -716,7 +716,7 @@ Filters:
  T.C avgblur           V->V       Apply Average Blur filter.
  T.C bbox              V->V       Compute bounding box for each frame.
  ... bench             V->V       Benchmark part of a filtergraph.
- T.C bilateral         V->V       Apply Bilateral filter.
+ TSC bilateral         V->V       Apply Bilateral filter.
  T.. bitplanenoise     V->V       Measure bit plane noise.
  .S. blackdetect       V->V       Detect video intervals that are (almost) black.
  ... blackframe        V->V       Detect frames that are (almost) black.
@@ -786,8 +786,8 @@ Filters:
  TSC exposure          V->V       Adjust exposure of the video stream.
  ... extractplanes     V->N       Extract planes as grayscale frames.
  TS. fade              V->V       Fade in/out input video.
- T.. fftdnoiz          V->V       Denoise frames using 3D FFT.
- T.. fftfilt           V->V       Apply arbitrary expressions to pixels in frequency domain.
+ TSC fftdnoiz          V->V       Denoise frames using 3D FFT.
+ TS. fftfilt           V->V       Apply arbitrary expressions to pixels in frequency domain.
  ... field             V->V       Extract a field from the input video.
  ... fieldhint         V->V       Field matching using hints.
  ... fieldmatch        N->V       Field matching for inverse telecine.
@@ -821,6 +821,7 @@ Filters:
  TSC hsvhold           V->V       Turns a certain HSV range into gray.
  TSC hsvkey            V->V       Turns a certain HSV range into transparency. Operates on YUV colors.
  T.C hue               V->V       Adjust the hue and saturation of the input video.
+ TSC huesaturation     V->V       Apply hue-saturation-intensity adjustments.
  ... hwdownload        V->V       Download a hardware frame to a normal frame
  ... hwmap             V->V       Map hardware frames
  ... hwupload          V->V       Upload a normal frame to a hardware frame
@@ -962,6 +963,7 @@ Filters:
  ... untile            V->V       Untile a frame into a sequence of frames.
  .SC v360              V->V       Convert 360 projection of video.
  T.. vaguedenoiser     V->V       Apply a Wavelet based Denoiser.
+ TSC varblur           VV->V      Apply Variable Blur filter.
  ... vectorscope       V->V       Video vectorscope.
  T.. vflip             V->V       Flip the input video vertically.
  ... vfrdet            V->V       Variable frame rate detect filter.
