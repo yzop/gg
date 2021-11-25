@@ -7,14 +7,14 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-git-20211117-amd64-static.tar.xz
-              version: a35101aae36583450be4881a5cde2a904a489d84
+                build: ffmpeg-git-20211123-amd64-static.tar.xz
+              version: 9dd104f6e263dce770541074d99b5286524f2a8b
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
                  nasm: 2.15.05
 
-               libaom: 3.2.0-231-gd2345ca3b
+               libaom: 3.2.0-249-g10fe614ee
                libass: 0.15.2
                libgme: 0.6.3
                libsrt: 1.4.4
