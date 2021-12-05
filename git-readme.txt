@@ -7,14 +7,14 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-git-20211123-amd64-static.tar.xz
-              version: 9dd104f6e263dce770541074d99b5286524f2a8b
+                build: ffmpeg-git-20211203-amd64-static.tar.xz
+              version: b236ef0a594e20038b4045e2fecd414f1886d212
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
                  nasm: 2.15.05
 
-               libaom: 3.2.0-249-g10fe614ee
+               libaom: 3.2.0-279-g0c29b262f
                libass: 0.15.2
                libgme: 0.6.3
                libsrt: 1.4.4
@@ -108,7 +108,7 @@ Codecs:
  D.V.L. bfi                  Brute Force & Ignorance
  D.V.L. binkvideo            Bink video
  D.VI.. bintext              Binary text
- D.VI.S bitpacked            Bitpacked
+ DEVI.S bitpacked            Bitpacked
  DEVI.S bmp                  BMP (Windows and OS/2 bitmap)
  D.V..S bmv_video            Discworld II BMV video
  D.VI.S brender_pix          BRender PIX image
@@ -591,6 +591,7 @@ Filters:
  T.. adelay            A->A       Delay one or more audio channels.
  TSC adenorm           A->A       Remedy denormals by adding extremely low-level noise.
  ... aderivative       A->A       Compute derivative of input audio.
+ T.C adynamicsmooth    A->A       Apply Dynamic Smoothing of input audio.
  ... aecho             A->A       Add echoing to the audio.
  TSC aemphasis         A->A       Audio emphasis.
  T.. aeval             A->A       Filter audio signal according to a specified expression.
@@ -639,6 +640,7 @@ Filters:
  ... ashowinfo         A->A       Show textual information for each audio frame.
  T.. asidedata         A->A       Manipulate audio frame side data.
  TSC asoftclip         A->A       Audio Soft Clipper.
+ .S. aspectralstats    A->A       Show frequency domain statistics about audio frames.
  ... asplit            A->N       Pass on the audio input to N audio outputs.
  .S. astats            A->A       Show time domain statistics about audio frames.
  ..C astreamselect     N->N       Select audio streams
