@@ -7,14 +7,14 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-git-20211209-amd64-static.tar.xz
-              version: 4f44a218e53cd92e64ba10a935bc1e7583c3e218
+                build: ffmpeg-git-20211217-amd64-static.tar.xz
+              version: 68457c1e85122ffcadb0c909070dd210095fd2cd
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
                  nasm: 2.15.05
 
-               libaom: 3.2.0-297-g93c1c37d0
+               libaom: 3.2.0-327-gff557002e
                libass: 0.15.2
                libgme: 0.6.3
                libsrt: 1.4.4
@@ -591,6 +591,7 @@ Filters:
  T.. adelay            A->A       Delay one or more audio channels.
  TSC adenorm           A->A       Remedy denormals by adding extremely low-level noise.
  ... aderivative       A->A       Compute derivative of input audio.
+ TSC adynamicequalizer A->A       Apply Dynamic Equalization of input audio.
  T.C adynamicsmooth    A->A       Apply Dynamic Smoothing of input audio.
  ... aecho             A->A       Add echoing to the audio.
  TSC aemphasis         A->A       Audio emphasis.
