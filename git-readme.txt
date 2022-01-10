@@ -7,20 +7,20 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-git-20211217-amd64-static.tar.xz
-              version: 68457c1e85122ffcadb0c909070dd210095fd2cd
+                build: ffmpeg-git-20220108-amd64-static.tar.xz
+              version: ffb000fff8f945a5b30f1df8ab1cb2e8300cdabd
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
                  nasm: 2.15.05
 
-               libaom: 3.2.0-327-gff557002e
+               libaom: 3.2.0-374-gdb341948f
                libass: 0.15.2
                libgme: 0.6.3
                libsrt: 1.4.4
                libvpx: 1.11.0-30-g888bafc78
-              libvmaf: 1.5.3
-              libx264: 0.164.3079 
+              libvmaf: 2.3.0
+              libx264: 0.164.3081 
               libx265: 3.5+1-f0c1022b6
               libxvid: 1.3.7 
               libwebp: 0.6.1 
@@ -618,6 +618,7 @@ Filters:
  ... amultiply         AA->A      Multiply two audio streams.
  TSC anequalizer       A->N       Apply high-order audio parametric multi band equalizer.
  TSC anlmdn            A->A       Reduce broadband noise from stream using Non-Local Means.
+ .SC anlmf             AA->A      Apply Normalized Least-Mean-Fourth algorithm to first audio stream.
  .SC anlms             AA->A      Apply Normalized Least-Mean-Squares algorithm to first audio stream.
  ... anull             A->A       Pass the source unchanged to the output.
  T.. apad              A->A       Pad audio with silence.
