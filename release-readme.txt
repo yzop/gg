@@ -7,8 +7,8 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-5.0-amd64-static.tar.xz
-              version: 5.0
+                build: ffmpeg-5.0.1-amd64-static.tar.xz
+              version: 5.0.1
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
@@ -20,13 +20,13 @@
                libsrt: 1.4.4
                libvpx: 1.11.0-30-g888bafc78
               libvmaf: 2.3.0
-              libx264: 0.164.3081 
+              libx264: 0.164.3094 
               libx265: 3.5+1-f0c1022b6
               libxvid: 1.3.7 
               libwebp: 0.6.1 
               libzimg: 3.0.3
               libzvbi: 0.2.36
-             libdav1d: 0.9.2
+             libdav1d: 1.0.0
             libgnutls: 3.7.2
             libtheora: 1.2.0alpha1+git
             libfrei0r: 1.6.1-2
