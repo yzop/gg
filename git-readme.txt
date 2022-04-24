@@ -7,8 +7,8 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-git-20220302-amd64-static.tar.xz
-              version: e81242bb13b1e394cebaffcbed3e30700ccb8477
+                build: ffmpeg-git-20220422-amd64-static.tar.xz
+              version: fbd22504c4148d2a01ccfe38df26c144f56db76b
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
@@ -26,7 +26,7 @@
               libwebp: 0.6.1 
               libzimg: 3.0.3
               libzvbi: 0.2.36
-             libdav1d: 0.9.2
+             libdav1d: 1.0.0
             libgnutls: 3.7.2
             libtheora: 1.2.0alpha1+git
             libfrei0r: 1.6.1-2
@@ -299,6 +299,7 @@ Codecs:
  DEVI.S v410                 Uncompressed 4:4:4 10-bit
  D.V.L. vb                   Beam Software VB
  D.VI.S vble                 VBLE Lossless Codec
+ DEV.L. vbn                  Vizrt Binary Image
  D.V.L. vc1                  SMPTE VC-1 (decoders: vc1 vc1_v4l2m2m )
  D.V.L. vc1image             Windows Media Video 9 Image v2
  D.VIL. vcr1                 ATI VCR1
@@ -417,6 +418,7 @@ Codecs:
  DEAIL. comfortnoise         RFC 3389 Comfort Noise
  D.AIL. cook                 Cook / Cooker / Gecko (RealAudio G2)
  D.AIL. derf_dpcm            DPCM Xilam DERF
+ DEA.L. dfpwm                DFPWM (Dynamic Filter Pulse Width Modulation)
  D.AIL. dolby_e              Dolby E
  D.AIL. dsd_lsbf             DSD (Direct Stream Digital), least significant bit first
  D.AIL. dsd_lsbf_planar      DSD (Direct Stream Digital), least significant bit first, planar
@@ -461,7 +463,7 @@ Codecs:
  DEAIL. opus                 Opus (Opus Interactive Audio Codec) (decoders: opus libopus ) (encoders: opus libopus )
  D.AIL. paf_audio            Amazing Studio Packed Animation File Audio
  DEAIL. pcm_alaw             PCM A-law / G.711 A-law
- D.AI.S pcm_bluray           PCM signed 16|20|24-bit big-endian for Blu-ray media
+ DEAI.S pcm_bluray           PCM signed 16|20|24-bit big-endian for Blu-ray media
  DEAI.S pcm_dvd              PCM signed 20|24-bit big-endian
  D.AI.S pcm_f16le            PCM 16.8 floating point little-endian
  D.AI.S pcm_f24le            PCM 24.0 floating point little-endian
@@ -627,7 +629,7 @@ Filters:
  TSC aphaseshift       A->A       Apply phase shifting to input audio.
  TSC apsyclip          A->A       Audio Psychoacoustic Clipper.
  ... apulsator         A->A       Audio pulsator.
- ... arealtime         A->A       Slow down filtering to match realtime.
+ ..C arealtime         A->A       Slow down filtering to match realtime.
  ... aresample         A->A       Resample audio data.
  ... areverse          A->A       Reverse an audio clip.
  TSC arnndn            A->A       Reduce noise from speech using Recurrent Neural Networks.
@@ -791,6 +793,7 @@ Filters:
  TSC exposure          V->V       Adjust exposure of the video stream.
  ... extractplanes     V->N       Extract planes as grayscale frames.
  TS. fade              V->V       Fade in/out input video.
+ ..C feedback          VV->VV     Apply feedback video filter.
  TSC fftdnoiz          V->V       Denoise frames using 3D FFT.
  TS. fftfilt           V->V       Apply arbitrary expressions to pixels in frequency domain.
  ... field             V->V       Extract a field from the input video.
@@ -888,6 +891,7 @@ Filters:
  T.C phase             V->V       Phase shift fields.
  ... photosensitivity  V->V       Filter out photosensitive epilepsy seizure-inducing flashes.
  ... pixdesctest       V->V       Test pixel format definitions.
+ TSC pixelize          V->V       Pixelize video.
  T.C pixscope          V->V       Pixel data analysis.
  T.C pp                V->V       Filter video using libpostproc.
  T.. pp7               V->V       Apply Postprocessing 7 filter.
@@ -900,7 +904,7 @@ Filters:
  ... random            V->V       Return random frames.
  TSC readeia608        V->V       Read EIA-608 Closed Caption codes from input video and write them to frame metadata.
  ... readvitc          V->V       Read vertical interval timecode and write it to frame metadata.
- ... realtime          V->V       Slow down filtering to match realtime.
+ ..C realtime          V->V       Slow down filtering to match realtime.
  .S. remap             VVV->V     Remap pixels.
  TS. removegrain       V->V       Remove grain.
  T.. removelogo        V->V       Remove a TV logo based on a mask image.
@@ -936,6 +940,7 @@ Filters:
  T.. sidedata          V->V       Manipulate video frame side data.
  .S. signalstats       V->V       Generate statistics from video analysis.
  ... signature         N->V       Calculate the MPEG-7 video signature
+ ... siti              V->V       Calculate spatial information (SI) and temporal information (TI).
  T.. smartblur         V->V       Blur the input video without impacting the outlines.
  TSC sobel             V->V       Apply sobel operator.
  ... split             V->N       Pass on the input to N video outputs.
@@ -969,7 +974,7 @@ Filters:
  .SC v360              V->V       Convert 360 projection of video.
  T.. vaguedenoiser     V->V       Apply a Wavelet based Denoiser.
  TSC varblur           VV->V      Apply Variable Blur filter.
- ... vectorscope       V->V       Video vectorscope.
+ ..C vectorscope       V->V       Video vectorscope.
  T.. vflip             V->V       Flip the input video vertically.
  ... vfrdet            V->V       Variable frame rate detect filter.
  TSC vibrance          V->V       Boost or alter saturation.
@@ -980,7 +985,7 @@ Filters:
  ... vmafmotion        V->V       Calculate the VMAF Motion score.
  .S. vstack            N->V       Stack video inputs vertically.
  TSC w3fdif            V->V       Apply Martin Weston three field deinterlace.
- .S. waveform          V->V       Video waveform monitor.
+ .SC waveform          V->V       Video waveform monitor.
  .S. weave             V->V       Weave input video fields into frames.
  .S. xbr               V->V       Scale the input using xBR algorithm.
  TS. xcorrelate        VV->V      Cross-correlate first video stream with second video stream.
@@ -990,7 +995,7 @@ Filters:
  TS. yadif             V->V       Deinterlace the input image.
  TSC yaepblur          V->V       Yet another edge preserving blur filter.
  ... zoompan           V->V       Apply Zoom & Pan effect.
- ..C zscale            V->V       Apply resizing, colorspace and bit depth conversion.
+ .SC zscale            V->V       Apply resizing, colorspace and bit depth conversion.
  ... allrgb            |->V       Generate all RGB colors.
  ... allyuv            |->V       Generate all yuv colors.
  ... cellauto          |->V       Create pattern generated by an elementary cellular automaton.
@@ -1029,6 +1034,7 @@ Filters:
  ... showwaves         A->V       Convert input audio to a video output.
  ... showwavespic      A->V       Convert input audio to a video output single picture.
  ... spectrumsynth     VV->A      Convert input spectrum videos to audio output.
+ ... avsynctest        |->AV      Generate an Audio Video Sync Test.
  ..C amovie            |->N       Read audio from a movie source.
  ..C movie             |->N       Read from a movie source.
  ... afifo             A->A       Buffer input frames and send them when they are requested.
@@ -1076,6 +1082,8 @@ Input:
   udplite
   unix
   srt
+  ipfs
+  ipns
 Output:
   crypto
   ffrtmpcrypt
