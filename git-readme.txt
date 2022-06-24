@@ -7,8 +7,8 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-git-20220526-amd64-static.tar.xz
-              version: 0dcbe1c1aa8ace2a84a4a7963acd755c4bbd96fb
+                build: ffmpeg-git-20220622-amd64-static.tar.xz
+              version: 4d45f5acbd9ab55cd8d29d01843f28315ee27fee
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
@@ -20,7 +20,7 @@
                libsrt: 1.4.4
                libvpx: 1.11.0-30-g888bafc78
               libvmaf: 2.3.0
-              libx264: 0.164.3094 
+              libx264: 0.164.3095 
               libx265: 3.5+1-f0c1022b6
               libxvid: 1.3.7 
               libwebp: 0.6.1 
@@ -243,6 +243,7 @@ Codecs:
  D.VI.S psd                  Photoshop PSD file
  D.VIL. ptx                  V.Flash PTX image
  D.VI.S qdraw                Apple QuickDraw
+ DEVI.S qoi                  QOI (Quite OK Image)
  D.V.L. qpeg                 Q-team QPEG
  DEV..S qtrle                QuickTime Animation (RLE) video
  DEVI.S r10k                 AJA Kona 10-bit RGB Codec
@@ -704,6 +705,7 @@ Filters:
  T.C stereowiden       A->A       Apply stereo widening effect.
  ... superequalizer    A->A       Apply 18 band equalization filter.
  .S. surround          A->A       Apply audio surround upmix filter.
+ TSC tiltshelf         A->A       Apply a tilt shelf filter.
  TSC treble            A->A       Boost or cut upper frequencies.
  T.. tremolo           A->A       Apply tremolo effect.
  T.. vibrato           A->A       Apply vibrato effect.
