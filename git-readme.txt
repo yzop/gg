@@ -7,8 +7,8 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-git-20220722-amd64-static.tar.xz
-              version: 130d19bf2044ac76372d1b97ab87ab283c8b37f8
+                build: ffmpeg-git-20220910-amd64-static.tar.xz
+              version: c92edd969aaf8b12434ff4bd731aa4bc5548fbbf
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
@@ -20,7 +20,7 @@
                libsrt: 1.4.4
                libvpx: 1.11.0-30-g888bafc78
               libvmaf: 2.3.0
-              libx264: 0.164.3095 
+              libx264: 0.164.3098 
               libx265: 3.5+1-f0c1022b6
               libxvid: 1.3.7 
               libwebp: 0.6.1 
@@ -322,6 +322,7 @@ Codecs:
  DEV.L. vp8                  On2 VP8 (decoders: vp8 vp8_v4l2m2m libvpx ) (encoders: libvpx vp8_v4l2m2m )
  DEV.L. vp9                  Google VP9 (decoders: vp9 vp9_v4l2m2m libvpx-vp9 ) (encoders: libvpx-vp9 )
  ..V.L. vvc                  H.266 / VVC (Versatile Video Coding)
+ DEVI.S wbmp                 WBMP (Wireless Application Protocol Bitmap) image
  D.V..S wcmv                 WinCAM Motion Video
  DEVILS webp                 WebP (encoders: libwebp_anim libwebp )
  DEV.L. wmv1                 Windows Media Video 7
@@ -1031,6 +1032,7 @@ Filters:
  ... testsrc2          |->V       Generate another test pattern.
  ... yuvtestsrc        |->V       Generate YUV test pattern.
  ... nullsink          V->|       Do absolutely nothing with the input video.
+ ..C a3dscope          A->V       Convert input audio to 3d scope video output.
  ... abitscope         A->V       Convert input audio to audio bit scope video output.
  ... adrawgraph        A->V       Draw a graph using input audio metadata.
  ... agraphmonitor     A->V       Show various filtergraph stats.

@@ -7,20 +7,20 @@
                                 /_/           /____/
 
 
-                build: ffmpeg-5.0.1-amd64-static.tar.xz
-              version: 5.0.1
+                build: ffmpeg-5.1.1-amd64-static.tar.xz
+              version: 5.1.1
 
                   gcc: 8.3.0
                  yasm: 1.3.0.36.ge2569
                  nasm: 2.15.05
 
                libaom: 3.2.0-393-g402e264b9
-               libass: 0.15.2
+               libass: 0.16.0
                libgme: 0.6.3
                libsrt: 1.4.4
                libvpx: 1.11.0-30-g888bafc78
               libvmaf: 2.3.0
-              libx264: 0.164.3094 
+              libx264: 0.164.3098 
               libx265: 3.5+1-f0c1022b6
               libxvid: 1.3.7 
               libwebp: 0.6.1 
@@ -73,6 +73,8 @@ Codecs:
  ..V... = Video codec
  ..A... = Audio codec
  ..S... = Subtitle codec
+ ..D... = Data codec
+ ..T... = Attachment codec
  ...I.. = Intra frame-only codec
  ....L. = Lossy compression
  .....S = Lossless compression
@@ -181,6 +183,7 @@ Codecs:
  D.VIL. ipu                  IPU Video
  DEVILS jpeg2000             JPEG 2000 (decoders: jpeg2000 libopenjpeg ) (encoders: jpeg2000 libopenjpeg )
  DEVILS jpegls               JPEG-LS
+ ..VILS jpegxl               JPEG XL
  D.VIL. jv                   Bitmap Brothers JV video
  D.V.L. kgv1                 Kega Game Video
  D.V.L. kmvc                 Karl Morton's video codec
@@ -230,6 +233,7 @@ Codecs:
  DEVI.S pgm                  PGM (Portable GrayMap) image
  DEVI.S pgmyuv               PGMYUV (Portable GrayMap YUV) image
  D.VI.S pgx                  PGX (JPEG2000 Test Format)
+ DEVI.S phm                  PHM (Portable HalfFloatMap) image
  D.V.L. photocd              Kodak Photo CD
  D.VIL. pictor               Pictor/PC Paint
  D.VIL. pixlet               Apple Pixlet
@@ -240,6 +244,7 @@ Codecs:
  D.VI.S psd                  Photoshop PSD file
  D.VIL. ptx                  V.Flash PTX image
  D.VI.S qdraw                Apple QuickDraw
+ DEVI.S qoi                  QOI (Quite OK Image)
  D.V.L. qpeg                 Q-team QPEG
  DEV..S qtrle                QuickTime Animation (RLE) video
  DEVI.S r10k                 AJA Kona 10-bit RGB Codec
@@ -299,6 +304,7 @@ Codecs:
  DEVI.S v410                 Uncompressed 4:4:4 10-bit
  D.V.L. vb                   Beam Software VB
  D.VI.S vble                 VBLE Lossless Codec
+ DEV.L. vbn                  Vizrt Binary Image
  D.V.L. vc1                  SMPTE VC-1 (decoders: vc1 vc1_v4l2m2m )
  D.V.L. vc1image             Windows Media Video 9 Image v2
  D.VIL. vcr1                 ATI VCR1
@@ -417,6 +423,7 @@ Codecs:
  DEAIL. comfortnoise         RFC 3389 Comfort Noise
  D.AIL. cook                 Cook / Cooker / Gecko (RealAudio G2)
  D.AIL. derf_dpcm            DPCM Xilam DERF
+ DEA.L. dfpwm                DFPWM (Dynamic Filter Pulse Width Modulation)
  D.AIL. dolby_e              Dolby E
  D.AIL. dsd_lsbf             DSD (Direct Stream Digital), least significant bit first
  D.AIL. dsd_lsbf_planar      DSD (Direct Stream Digital), least significant bit first, planar
@@ -461,7 +468,7 @@ Codecs:
  DEAIL. opus                 Opus (Opus Interactive Audio Codec) (decoders: opus libopus ) (encoders: opus libopus )
  D.AIL. paf_audio            Amazing Studio Packed Animation File Audio
  DEAIL. pcm_alaw             PCM A-law / G.711 A-law
- D.AI.S pcm_bluray           PCM signed 16|20|24-bit big-endian for Blu-ray media
+ DEAI.S pcm_bluray           PCM signed 16|20|24-bit big-endian for Blu-ray media
  DEAI.S pcm_dvd              PCM signed 20|24-bit big-endian
  D.AI.S pcm_f16le            PCM 16.8 floating point little-endian
  D.AI.S pcm_f24le            PCM 24.0 floating point little-endian
@@ -584,13 +591,13 @@ Filters:
  ... acue              A->A       Delay filtering to match a cue.
  ... acrossfade        AA->A      Cross fade two input audio streams.
  .S. acrossover        A->N       Split audio into per-bands streams.
- ..C acrusher          A->A       Reduce audio bit resolution.
+ T.C acrusher          A->A       Reduce audio bit resolution.
  TS. adeclick          A->A       Remove impulsive noise from input audio.
  TS. adeclip           A->A       Remove clipping from input audio.
  TS. adecorrelate      A->A       Apply decorrelation to input audio.
- T.. adelay            A->A       Delay one or more audio channels.
+ T.C adelay            A->A       Delay one or more audio channels.
  TSC adenorm           A->A       Remedy denormals by adding extremely low-level noise.
- ... aderivative       A->A       Compute derivative of input audio.
+ T.. aderivative       A->A       Compute derivative of input audio.
  TSC adynamicequalizer A->A       Apply Dynamic Equalization of input audio.
  T.C adynamicsmooth    A->A       Apply Dynamic Smoothing of input audio.
  ... aecho             A->A       Add echoing to the audio.
@@ -599,14 +606,14 @@ Filters:
  T.C aexciter          A->A       Enhance high frequency part of audio.
  T.C afade             A->A       Fade in/out input audio.
  TSC afftdn            A->A       Denoise audio samples using FFT.
- T.. afftfilt          A->A       Apply arbitrary expressions to samples in frequency domain.
+ TS. afftfilt          A->A       Apply arbitrary expressions to samples in frequency domain.
  .SC afir              N->N       Apply Finite Impulse Response filter with supplied coefficients in additional stream(s).
  ... aformat           A->A       Convert the input audio to one of the specified formats.
  TSC afreqshift        A->A       Apply frequency shifting to input audio.
  TSC afwtdn            A->A       Denoise audio stream using Wavelets.
  T.C agate             A->A       Audio gate.
  .S. aiir              A->N       Apply Infinite Impulse Response filter with supplied coefficients.
- ... aintegral         A->A       Compute integral of input audio.
+ T.. aintegral         A->A       Compute integral of input audio.
  ... ainterleave       N->A       Temporally interleave audio inputs.
  T.. alatency          A->A       Report audio filtering latency.
  T.C alimiter          A->A       Audio lookahead limiter.
@@ -618,16 +625,16 @@ Filters:
  ... amultiply         AA->A      Multiply two audio streams.
  TSC anequalizer       A->N       Apply high-order audio parametric multi band equalizer.
  TSC anlmdn            A->A       Reduce broadband noise from stream using Non-Local Means.
- .SC anlmf             AA->A      Apply Normalized Least-Mean-Fourth algorithm to first audio stream.
- .SC anlms             AA->A      Apply Normalized Least-Mean-Squares algorithm to first audio stream.
+ TSC anlmf             AA->A      Apply Normalized Least-Mean-Fourth algorithm to first audio stream.
+ TSC anlms             AA->A      Apply Normalized Least-Mean-Squares algorithm to first audio stream.
  ... anull             A->A       Pass the source unchanged to the output.
  T.. apad              A->A       Pad audio with silence.
- T.. aperms            A->A       Set permissions for the output audio frame.
+ T.C aperms            A->A       Set permissions for the output audio frame.
  ... aphaser           A->A       Add a phasing effect to the audio.
  TSC aphaseshift       A->A       Apply phase shifting to input audio.
  TSC apsyclip          A->A       Audio Psychoacoustic Clipper.
  ... apulsator         A->A       Audio pulsator.
- ... arealtime         A->A       Slow down filtering to match realtime.
+ ..C arealtime         A->A       Slow down filtering to match realtime.
  ... aresample         A->A       Resample audio data.
  ... areverse          A->A       Reverse an audio clip.
  TSC arnndn            A->A       Reduce noise from speech using Recurrent Neural Networks.
@@ -663,11 +670,12 @@ Filters:
  ... channelsplit      A->N       Split audio into per-channel streams.
  ... chorus            A->A       Add a chorus effect to the audio.
  ... compand           A->A       Compress or expand audio dynamic range.
- ... compensationdelay A->A       Audio Compensation Delay Line.
+ T.C compensationdelay A->A       Audio Compensation Delay Line.
  T.C crossfeed         A->A       Apply headphone crossfeed filter.
  TSC crystalizer       A->A       Simple audio noise sharpening filter.
  T.. dcshift           A->A       Apply a DC shift to the audio.
  T.. deesser           A->A       Apply de-essing to the audio.
+ T.C dialoguenhance    A->A       Audio Dialogue Enhancement.
  ... drmeter           A->A       Measure audio dynamic range.
  T.C dynaudnorm        A->A       Dynamic Audio Normalizer.
  ... earwax            A->A       Widen the stereo image.
@@ -698,9 +706,11 @@ Filters:
  T.C stereowiden       A->A       Apply stereo widening effect.
  ... superequalizer    A->A       Apply 18 band equalization filter.
  .S. surround          A->A       Apply audio surround upmix filter.
+ TSC tiltshelf         A->A       Apply a tilt shelf filter.
  TSC treble            A->A       Boost or cut upper frequencies.
- ... tremolo           A->A       Apply tremolo effect.
- ... vibrato           A->A       Apply vibrato effect.
+ T.. tremolo           A->A       Apply tremolo effect.
+ T.. vibrato           A->A       Apply vibrato effect.
+ T.C virtualbass       A->A       Audio Virtual Bass.
  T.C volume            A->A       Change input volume.
  ... volumedetect      A->A       Detect audio volume.
  ... aevalsrc          |->A       Generate an audio signal generated by an expression.
@@ -725,6 +735,8 @@ Filters:
  .S. blackdetect       V->V       Detect video intervals that are (almost) black.
  ... blackframe        V->V       Detect frames that are (almost) black.
  TSC blend             VV->V      Blend two video frames into each other.
+ ... blockdetect       V->V       Blockdetect filter.
+ ... blurdetect        V->V       Blurdetect filter.
  TS. bm3d              N->V       Block-Matching 3D denoiser.
  T.. boxblur           V->V       Blur the input.
  TS. bwdif             V->V       Deinterlace the input image.
@@ -743,6 +755,7 @@ Filters:
  TSC colorkey          V->V       Turns a certain color into transparency. Operates on RGB colors.
  TSC colorhold         V->V       Turns a certain color range into gray. Operates on RGB colors.
  TSC colorlevels       V->V       Adjust the color levels.
+ TSC colormap          VVV->V     Apply custom Color Maps to video stream.
  TS. colormatrix       V->V       Convert color matrix.
  TS. colorspace        V->V       Convert between colorspaces.
  TSC colortemperature  V->V       Adjust color temperature of video.
@@ -790,6 +803,7 @@ Filters:
  TSC exposure          V->V       Adjust exposure of the video stream.
  ... extractplanes     V->N       Extract planes as grayscale frames.
  TS. fade              V->V       Fade in/out input video.
+ ..C feedback          VV->VV     Apply feedback video filter.
  TSC fftdnoiz          V->V       Denoise frames using 3D FFT.
  TS. fftfilt           V->V       Apply arbitrary expressions to pixels in frequency domain.
  ... field             V->V       Extract a field from the input video.
@@ -869,6 +883,7 @@ Filters:
  T.C morpho            VV->V      Apply Morphological filter.
  ... mpdecimate        V->V       Remove near-duplicate frames.
  TS. msad              VV->V      Calculate the MSAD between two video streams.
+ TSC multiply          VV->V      Multiply first video stream with second video stream.
  TSC negate            V->V       Negate input video.
  TS. nlmeans           V->V       Non-local means denoiser.
  TSC nnedi             V->V       Apply neural network edge directed interpolation intra-only deinterlacer.
@@ -882,11 +897,12 @@ Filters:
  ... pad               V->V       Pad the input video.
  ... palettegen        V->V       Find the optimal palette for a given stream.
  ... paletteuse        VV->V      Use a palette to downsample an input video stream.
- T.. perms             V->V       Set permissions for the output video frame.
+ T.C perms             V->V       Set permissions for the output video frame.
  TS. perspective       V->V       Correct the perspective of video.
  T.C phase             V->V       Phase shift fields.
  ... photosensitivity  V->V       Filter out photosensitive epilepsy seizure-inducing flashes.
  ... pixdesctest       V->V       Test pixel format definitions.
+ TSC pixelize          V->V       Pixelize video.
  T.C pixscope          V->V       Pixel data analysis.
  T.C pp                V->V       Filter video using libpostproc.
  T.. pp7               V->V       Apply Postprocessing 7 filter.
@@ -899,7 +915,7 @@ Filters:
  ... random            V->V       Return random frames.
  TSC readeia608        V->V       Read EIA-608 Closed Caption codes from input video and write them to frame metadata.
  ... readvitc          V->V       Read vertical interval timecode and write it to frame metadata.
- ... realtime          V->V       Slow down filtering to match realtime.
+ ..C realtime          V->V       Slow down filtering to match realtime.
  .S. remap             VVV->V     Remap pixels.
  TS. removegrain       V->V       Remove grain.
  T.. removelogo        V->V       Remove a TV logo based on a mask image.
@@ -935,6 +951,7 @@ Filters:
  T.. sidedata          V->V       Manipulate video frame side data.
  .S. signalstats       V->V       Generate statistics from video analysis.
  ... signature         N->V       Calculate the MPEG-7 video signature
+ ... siti              V->V       Calculate spatial information (SI) and temporal information (TI).
  T.. smartblur         V->V       Blur the input video without impacting the outlines.
  TSC sobel             V->V       Apply sobel operator.
  ... split             V->N       Pass on the input to N video outputs.
@@ -968,7 +985,7 @@ Filters:
  .SC v360              V->V       Convert 360 projection of video.
  T.. vaguedenoiser     V->V       Apply a Wavelet based Denoiser.
  TSC varblur           VV->V      Apply Variable Blur filter.
- ... vectorscope       V->V       Video vectorscope.
+ ..C vectorscope       V->V       Video vectorscope.
  T.. vflip             V->V       Flip the input video vertically.
  ... vfrdet            V->V       Variable frame rate detect filter.
  TSC vibrance          V->V       Boost or alter saturation.
@@ -979,7 +996,7 @@ Filters:
  ... vmafmotion        V->V       Calculate the VMAF Motion score.
  .S. vstack            N->V       Stack video inputs vertically.
  TSC w3fdif            V->V       Apply Martin Weston three field deinterlace.
- .S. waveform          V->V       Video waveform monitor.
+ .SC waveform          V->V       Video waveform monitor.
  .S. weave             V->V       Weave input video fields into frames.
  .S. xbr               V->V       Scale the input using xBR algorithm.
  TS. xcorrelate        VV->V      Cross-correlate first video stream with second video stream.
@@ -989,11 +1006,12 @@ Filters:
  TS. yadif             V->V       Deinterlace the input image.
  TSC yaepblur          V->V       Yet another edge preserving blur filter.
  ... zoompan           V->V       Apply Zoom & Pan effect.
- ..C zscale            V->V       Apply resizing, colorspace and bit depth conversion.
+ .SC zscale            V->V       Apply resizing, colorspace and bit depth conversion.
  ... allrgb            |->V       Generate all RGB colors.
  ... allyuv            |->V       Generate all yuv colors.
  ... cellauto          |->V       Create pattern generated by an elementary cellular automaton.
  ..C color             |->V       Provide an uniformly colored input.
+ ... colorchart        |->V       Generate color checker chart.
  ... colorspectrum     |->V       Generate colors spectrum.
  ... frei0r_src        |->V       Generate a frei0r source.
  .S. gradients         |->V       Draw a gradients.
@@ -1028,6 +1046,7 @@ Filters:
  ... showwaves         A->V       Convert input audio to a video output.
  ... showwavespic      A->V       Convert input audio to a video output single picture.
  ... spectrumsynth     VV->A      Convert input spectrum videos to audio output.
+ ... avsynctest        |->AV      Generate an Audio Video Sync Test.
  ..C amovie            |->N       Read audio from a movie source.
  ..C movie             |->N       Read from a movie source.
  ... afifo             A->A       Buffer input frames and send them when they are requested.
@@ -1075,6 +1094,8 @@ Input:
   udplite
   unix
   srt
+  ipfs
+  ipns
 Output:
   crypto
   ffrtmpcrypt
